@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cafes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="lotacao" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="etapas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="situacao" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="participante">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="sobrenome" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="sala1" Type="int" Nullable="false" />
+          <Property Name="sala2" Type="int" Nullable="false" />
+          <Property Name="cafe1" Type="int" Nullable="false" />
+          <Property Name="cafe2" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="lotacao" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_participante_cafe1">
+          <End Role="cafes" Type="Self.cafes" Multiplicity="1" />
+          <End Role="participante" Type="Self.participante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cafes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="participante">
+              <PropertyRef Name="cafe1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participante_cafe2">
+          <End Role="cafes" Type="Self.cafes" Multiplicity="1" />
+          <End Role="participante" Type="Self.participante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cafes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="participante">
+              <PropertyRef Name="cafe2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participante_sala1">
+          <End Role="salas" Type="Self.salas" Multiplicity="1" />
+          <End Role="participante" Type="Self.participante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="participante">
+              <PropertyRef Name="sala1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participante_sala2">
+          <End Role="salas" Type="Self.salas" Multiplicity="1" />
+          <End Role="participante" Type="Self.participante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="participante">
+              <PropertyRef Name="sala2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="cafes" EntityType="Self.cafes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="etapas" EntityType="Self.etapas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="participante" EntityType="Self.participante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="salas" EntityType="Self.salas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_participante_cafe1" Association="Self.FK_participante_cafe1">
+            <End Role="cafes" EntitySet="cafes" />
+            <End Role="participante" EntitySet="participante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participante_cafe2" Association="Self.FK_participante_cafe2">
+            <End Role="cafes" EntitySet="cafes" />
+            <End Role="participante" EntitySet="participante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participante_sala1" Association="Self.FK_participante_sala1">
+            <End Role="salas" EntitySet="salas" />
+            <End Role="participante" EntitySet="participante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participante_sala2" Association="Self.FK_participante_sala2">
+            <End Role="salas" EntitySet="salas" />
+            <End Role="participante" EntitySet="participante" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="desafioProgEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cafes" EntityType="Model.cafes" />
+          <EntitySet Name="etapas" EntityType="Model.etapas" />
+          <EntitySet Name="participante" EntityType="Model.participante" />
+          <EntitySet Name="salas" EntityType="Model.salas" />
+          <AssociationSet Name="FK_participante_cafe1" Association="Model.FK_participante_cafe1">
+            <End Role="cafes" EntitySet="cafes" />
+            <End Role="participante" EntitySet="participante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participante_cafe2" Association="Model.FK_participante_cafe2">
+            <End Role="cafes" EntitySet="cafes" />
+            <End Role="participante" EntitySet="participante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participante_sala1" Association="Model.FK_participante_sala1">
+            <End Role="salas" EntitySet="salas" />
+            <End Role="participante" EntitySet="participante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participante_sala2" Association="Model.FK_participante_sala2">
+            <End Role="salas" EntitySet="salas" />
+            <End Role="participante" EntitySet="participante" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="cafes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="lotacao" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="participante" Relationship="Model.FK_participante_cafe1" FromRole="cafes" ToRole="participante" />
+          <NavigationProperty Name="participante1" Relationship="Model.FK_participante_cafe2" FromRole="cafes" ToRole="participante" />
+        </EntityType>
+        <EntityType Name="etapas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="situacao" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="participante">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="sobrenome" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="sala1" Type="Int32" Nullable="false" />
+          <Property Name="sala2" Type="Int32" Nullable="false" />
+          <Property Name="cafe1" Type="Int32" Nullable="false" />
+          <Property Name="cafe2" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cafes" Relationship="Model.FK_participante_cafe1" FromRole="participante" ToRole="cafes" />
+          <NavigationProperty Name="cafes1" Relationship="Model.FK_participante_cafe2" FromRole="participante" ToRole="cafes" />
+          <NavigationProperty Name="salas" Relationship="Model.FK_participante_sala1" FromRole="participante" ToRole="salas" />
+          <NavigationProperty Name="salas1" Relationship="Model.FK_participante_sala2" FromRole="participante" ToRole="salas" />
+        </EntityType>
+        <EntityType Name="salas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="lotacao" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="participante" Relationship="Model.FK_participante_sala1" FromRole="salas" ToRole="participante" />
+          <NavigationProperty Name="participante1" Relationship="Model.FK_participante_sala2" FromRole="salas" ToRole="participante" />
+        </EntityType>
+        <Association Name="FK_participante_cafe1">
+          <End Type="Model.cafes" Role="cafes" Multiplicity="1" />
+          <End Type="Model.participante" Role="participante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cafes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="participante">
+              <PropertyRef Name="cafe1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participante_cafe2">
+          <End Type="Model.cafes" Role="cafes" Multiplicity="1" />
+          <End Type="Model.participante" Role="participante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cafes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="participante">
+              <PropertyRef Name="cafe2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participante_sala1">
+          <End Type="Model.salas" Role="salas" Multiplicity="1" />
+          <End Type="Model.participante" Role="participante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="participante">
+              <PropertyRef Name="sala1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participante_sala2">
+          <End Type="Model.salas" Role="salas" Multiplicity="1" />
+          <End Type="Model.participante" Role="participante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="salas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="participante">
+              <PropertyRef Name="sala2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="desafioProgEntities">
+          <EntitySetMapping Name="cafes">
+            <EntityTypeMapping TypeName="Model.cafes">
+              <MappingFragment StoreEntitySet="cafes">
+                <ScalarProperty Name="lotacao" ColumnName="lotacao" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="etapas">
+            <EntityTypeMapping TypeName="Model.etapas">
+              <MappingFragment StoreEntitySet="etapas">
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="participante">
+            <EntityTypeMapping TypeName="Model.participante">
+              <MappingFragment StoreEntitySet="participante">
+                <ScalarProperty Name="cafe2" ColumnName="cafe2" />
+                <ScalarProperty Name="cafe1" ColumnName="cafe1" />
+                <ScalarProperty Name="sala2" ColumnName="sala2" />
+                <ScalarProperty Name="sala1" ColumnName="sala1" />
+                <ScalarProperty Name="sobrenome" ColumnName="sobrenome" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salas">
+            <EntityTypeMapping TypeName="Model.salas">
+              <MappingFragment StoreEntitySet="salas">
+                <ScalarProperty Name="lotacao" ColumnName="lotacao" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

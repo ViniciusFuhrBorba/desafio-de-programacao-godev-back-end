@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cafes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="lotacao" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="etapas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="situacao" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="participante">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="sobrenome" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="sala1" Type="int" Nullable="false" />
+    <Property Name="sala2" Type="int" Nullable="false" />
+    <Property Name="cafe1" Type="int" Nullable="false" />
+    <Property Name="cafe2" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="salas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="lotacao" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_participante_cafe1">
+    <End Role="cafes" Type="Self.cafes" Multiplicity="1" />
+    <End Role="participante" Type="Self.participante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cafes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="participante">
+        <PropertyRef Name="cafe1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_participante_cafe2">
+    <End Role="cafes" Type="Self.cafes" Multiplicity="1" />
+    <End Role="participante" Type="Self.participante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cafes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="participante">
+        <PropertyRef Name="cafe2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_participante_sala1">
+    <End Role="salas" Type="Self.salas" Multiplicity="1" />
+    <End Role="participante" Type="Self.participante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="participante">
+        <PropertyRef Name="sala1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_participante_sala2">
+    <End Role="salas" Type="Self.salas" Multiplicity="1" />
+    <End Role="participante" Type="Self.participante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="participante">
+        <PropertyRef Name="sala2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="cafes" EntityType="Self.cafes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="etapas" EntityType="Self.etapas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="participante" EntityType="Self.participante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="salas" EntityType="Self.salas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_participante_cafe1" Association="Self.FK_participante_cafe1">
+      <End Role="cafes" EntitySet="cafes" />
+      <End Role="participante" EntitySet="participante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_participante_cafe2" Association="Self.FK_participante_cafe2">
+      <End Role="cafes" EntitySet="cafes" />
+      <End Role="participante" EntitySet="participante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_participante_sala1" Association="Self.FK_participante_sala1">
+      <End Role="salas" EntitySet="salas" />
+      <End Role="participante" EntitySet="participante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_participante_sala2" Association="Self.FK_participante_sala2">
+      <End Role="salas" EntitySet="salas" />
+      <End Role="participante" EntitySet="participante" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

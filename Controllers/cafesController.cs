@@ -30,8 +30,14 @@ namespace desafioProg.Controllers
         }
 
         // POST: api/cafes
-        public void Post([FromBody]string value)
+        public string Post([FromBody]cafes cafe)
         {
+            using(desafioProgEntities bd = new desafioProgEntities())
+            {
+                bd.cafes.Add(cafe);
+                bd.SaveChanges();
+                return "Café salvo com sucesso";
+            }
         }
 
         // PUT: api/cafes/5

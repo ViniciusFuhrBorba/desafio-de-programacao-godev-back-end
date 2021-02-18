@@ -41,8 +41,15 @@ namespace desafioProg.Controllers
         }
 
         // PUT: api/salas/5
-        public void Put(int id, [FromBody] string value)
+        public string Put(int id, [FromBody] salas sala)
         {
+            using (desafioProgEntities bd = new desafioProgEntities())
+            {
+                salas salaAlterar = bd.salas.Find(id);
+                salaAlterar.lotacao = sala.lotacao;
+                bd.SaveChanges();
+                return "Alterado com sucesso";
+            }
         }
 
         // DELETE: api/salas/5

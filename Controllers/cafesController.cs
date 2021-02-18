@@ -41,8 +41,15 @@ namespace desafioProg.Controllers
         }
 
         // PUT: api/cafes/5
-        public void Put(int id, [FromBody]string value)
+        public string Put(int id, [FromBody]cafes cafe)
         {
+            using(desafioProgEntities bd = new desafioProgEntities())
+            {
+                cafes cafeAlterar = bd.cafes.Find(id);
+                cafeAlterar.lotacao = cafe.lotacao;
+                bd.SaveChanges();
+                return "Alterado com sucesso";
+            }
         }
 
         // DELETE: api/cafes/5

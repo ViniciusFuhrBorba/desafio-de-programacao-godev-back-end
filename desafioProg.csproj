@@ -170,6 +170,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\cafesController.cs" />
+    <Compile Include="Controllers\etapasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\participanteController.cs" />
     <Compile Include="Controllers\salasController.cs" />

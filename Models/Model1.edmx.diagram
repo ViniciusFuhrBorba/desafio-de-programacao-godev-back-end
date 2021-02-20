@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="188cf4d36e934a86ba47c35f2b615950" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.cafes" Width="1.5" PointX="0.75" PointY="1.5" />
-        <EntityTypeShape EntityType="Model.etapas" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.participante" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="Model.salas" Width="1.5" PointX="0.75" PointY="5.5" />
-        <AssociationConnector Association="Model.FK_participante_cafe1" />
-        <AssociationConnector Association="Model.FK_participante_cafe2" />
-        <AssociationConnector Association="Model.FK_participante_sala1" />
-        <AssociationConnector Association="Model.FK_participante_sala2" />
+      <Diagram DiagramId="38147c627d7d4feca7872ac63ea9ab91" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.cafes" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.etapas" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.participante" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.salas" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_participante_cafe1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_participante_cafe2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_participante_sala1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_participante_sala2" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

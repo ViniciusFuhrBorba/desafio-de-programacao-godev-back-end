@@ -4,40 +4,40 @@
     <EntitySetMapping Name="cafes">
       <EntityTypeMapping TypeName="Model.cafes">
         <MappingFragment StoreEntitySet="cafes">
-          <ScalarProperty Name="lotacao" ColumnName="lotacao" />
-          <ScalarProperty Name="nome" ColumnName="nome" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="lotacao" ColumnName="lotacao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="etapas">
       <EntityTypeMapping TypeName="Model.etapas">
         <MappingFragment StoreEntitySet="etapas">
-          <ScalarProperty Name="situacao" ColumnName="situacao" />
-          <ScalarProperty Name="nome" ColumnName="nome" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="participante">
       <EntityTypeMapping TypeName="Model.participante">
         <MappingFragment StoreEntitySet="participante">
-          <ScalarProperty Name="cafe2" ColumnName="cafe2" />
-          <ScalarProperty Name="cafe1" ColumnName="cafe1" />
-          <ScalarProperty Name="sala2" ColumnName="sala2" />
-          <ScalarProperty Name="sala1" ColumnName="sala1" />
-          <ScalarProperty Name="sobrenome" ColumnName="sobrenome" />
-          <ScalarProperty Name="nome" ColumnName="nome" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="sobrenome" ColumnName="sobrenome" />
+          <ScalarProperty Name="sala1" ColumnName="sala1" />
+          <ScalarProperty Name="sala2" ColumnName="sala2" />
+          <ScalarProperty Name="cafe1" ColumnName="cafe1" />
+          <ScalarProperty Name="cafe2" ColumnName="cafe2" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="salas">
       <EntityTypeMapping TypeName="Model.salas">
         <MappingFragment StoreEntitySet="salas">
-          <ScalarProperty Name="lotacao" ColumnName="lotacao" />
-          <ScalarProperty Name="nome" ColumnName="nome" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="lotacao" ColumnName="lotacao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

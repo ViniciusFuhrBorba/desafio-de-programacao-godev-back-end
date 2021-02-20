@@ -41,8 +41,16 @@ namespace desafioProg.Controllers
         }
 
         // PUT: api/participante/5
-        public void Put(int id, [FromBody] string value)
+        public string Put(int id, [FromBody] participante part)
         {
+            using(desafioProgEntities bd = new desafioProgEntities())
+            {
+                participante partAlterar = bd.participante.Find(id);
+                partAlterar.sala1 = part.sala1;
+                partAlterar.sala2 = part.sala2;
+                bd.SaveChanges();
+                return "Alterado com sucesso";
+            }
         }
 
         // DELETE: api/participante/5

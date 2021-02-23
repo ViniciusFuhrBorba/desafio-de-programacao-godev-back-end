@@ -18,7 +18,7 @@ namespace desafioProg.Controllers
             using (desafioProgEntities bd = new desafioProgEntities())
             {
                 var salas = from sal in bd.salas
-                            select new { sal.id, sal.nome, sal.lotacao };
+                            select new { sal.id, sal.nome, sal.lotacao};
                 return salas.ToList();
             }
         }

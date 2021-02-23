@@ -17,10 +17,10 @@ namespace desafioProg.Models
         public int id { get; set; }
         public string nome { get; set; }
         public string sobrenome { get; set; }
-        public int sala1 { get; set; }
-        public int sala2 { get; set; }
-        public int cafe1 { get; set; }
-        public int cafe2 { get; set; }
+        public int salaEtapa1 { get; set; }
+        public int salaEtapa2 { get; set; }
+        public int cafeEtapa1 { get; set; }
+        public int cafeEtapa2 { get; set; }
     
         public virtual cafes cafes { get; set; }
         public virtual cafes cafes1 { get; set; }

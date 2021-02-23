@@ -23,10 +23,10 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="sobrenome" Type="varchar" MaxLength="250" Nullable="false" />
-    <Property Name="sala1" Type="int" Nullable="false" />
-    <Property Name="sala2" Type="int" Nullable="false" />
-    <Property Name="cafe1" Type="int" Nullable="false" />
-    <Property Name="cafe2" Type="int" Nullable="false" />
+    <Property Name="salaEtapa1" Type="int" Nullable="false" />
+    <Property Name="salaEtapa2" Type="int" Nullable="false" />
+    <Property Name="cafeEtapa1" Type="int" Nullable="false" />
+    <Property Name="cafeEtapa2" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="salas">
     <Key>
@@ -44,7 +44,7 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="participante">
-        <PropertyRef Name="cafe1" />
+        <PropertyRef Name="cafeEtapa1" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -56,7 +56,7 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="participante">
-        <PropertyRef Name="cafe2" />
+        <PropertyRef Name="cafeEtapa2" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -68,7 +68,7 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="participante">
-        <PropertyRef Name="sala1" />
+        <PropertyRef Name="salaEtapa1" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -80,7 +80,7 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="participante">
-        <PropertyRef Name="sala2" />
+        <PropertyRef Name="salaEtapa2" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
